@@ -2,6 +2,8 @@ import pyodbc
 import logging
 
 
+# TODO write a test class
+
 class DatabaseConnectionTool:
     def __init__(self, connection_string=None):
         self._connection = self._create_connection(connection_string)
@@ -53,9 +55,9 @@ class DatabaseConnectionTool:
             self._log.error(err)
 
 
-def _drivers():
+def drivers():
     """
     Helper function, Checks and returns for the newest SQL database driver.
     """
-    drivers = pyodbc.drivers()
-    return drivers[0] if len(drivers) >= 1 else "No Driver Found"
+    found_drivers = pyodbc.drivers()
+    return found_drivers[0] if len(found_drivers) >= 1 else "No Driver Found"
